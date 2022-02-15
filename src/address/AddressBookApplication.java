@@ -17,11 +17,13 @@ public class AddressBookApplication {
         //create an instance of Menu class
         Menu myMenu = new Menu();
 
+        File file = new File("C:\\Users\\Adrian Anderson\\Documents\\addresses.txt");
+
         //create an instance of AddressBook class
         //AddressBook addressBook = new AddressBook();
 
         //Test method initAddressBookExercise
-       // initAddressBookExercise(addressBook);
+        initAddressBookExercise(file);
 
 //        System.out.println(myMenu.prompt_FirstName());
 //        System.out.println(myMenu.prompt_LastName());
@@ -37,9 +39,19 @@ public class AddressBookApplication {
     /**
      * initAddressBookExercise is a method for testing
      * the functionality of the Address Book Application.
-     * @param addressBook
+     * @param filename
      */
-    public static void initAddressBookExercise(AddressBook addressBook){
-       
+    public static void initAddressBookExercise(File filename){
+        try {
+            Scanner myReader = new Scanner(filename);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 }
