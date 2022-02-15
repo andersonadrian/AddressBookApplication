@@ -1,7 +1,5 @@
 package address.data;
 
-import address.data.AddressEntry;
-
 import java.util.ArrayList;
 
 /**The AddressBook class is the component used to add the information to the

@@ -3,6 +3,11 @@ package address;
 import address.data.AddressBook;
 import address.data.AddressEntry;
 
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
+
+
 public class AddressBookApplication {
 
     public static void main(String[] args) {
@@ -13,10 +18,10 @@ public class AddressBookApplication {
         Menu myMenu = new Menu();
 
         //create an instance of AddressBook class
-        AddressBook addressBook = new AddressBook();
+        //AddressBook addressBook = new AddressBook();
 
         //Test method initAddressBookExercise
-        initAddressBookExercise(addressBook);
+       // initAddressBookExercise(addressBook);
 
 //        System.out.println(myMenu.prompt_FirstName());
 //        System.out.println(myMenu.prompt_LastName());
