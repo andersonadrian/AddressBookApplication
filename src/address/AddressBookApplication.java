@@ -17,11 +17,13 @@ public class AddressBookApplication {
         //create an instance of Menu class
         Menu myMenu = new Menu();
 
+        File file = new File("C:\\Users\\Adrian Anderson\\Documents\\addresses.txt");
+
         //create an instance of AddressBook class
         //AddressBook addressBook = new AddressBook();
 
         //Test method initAddressBookExercise
-       // initAddressBookExercise(addressBook);
+        initAddressBookExercise(file);
 
 //        System.out.println(myMenu.prompt_FirstName());
 //        System.out.println(myMenu.prompt_LastName());
@@ -37,17 +39,25 @@ public class AddressBookApplication {
     /**
      * initAddressBookExercise is a method for testing
      * the functionality of the Address Book Application.
-     * @param addressBook
+     * @param filename
      */
-    public static void initAddressBookExercise(AddressBook addressBook){
-        AddressEntry contactOne = new AddressEntry("Paul", "Henry","1650 Mannie Road",
-                "Oakland", "C.A.", 94565, "510-888-8888", "paul@jvm.com");
-
-        AddressEntry contactTwo = new AddressEntry("Marlene", "Henry","1650 Mannie Road",
-                "Oakland", "C.A.", 94565, "510-999-9999", "marlene@jvm.com");
-
-        addressBook.add(contactOne);
-        addressBook.add(contactTwo);
+    public static void initAddressBookExercise(File filename){
+        //create an instance of AddressBook class
+        AddressBook addressBook = new AddressBook();
+        try {
+            Scanner myReader = new Scanner(filename);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String [] entry = data.split(",", 8);
+                AddressEntry addressEntry = new AddressEntry(entry[0], entry[1], entry[2], entry[3], entry[4], Integer.parseInt(entry[5]), entry[6], entry[7]);
+                addressBook.add(addressEntry);
+//                System.out.println(addressEntry);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
         addressBook.list();
     }
 }
