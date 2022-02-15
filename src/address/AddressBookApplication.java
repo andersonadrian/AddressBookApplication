@@ -42,16 +42,22 @@ public class AddressBookApplication {
      * @param filename
      */
     public static void initAddressBookExercise(File filename){
+        //create an instance of AddressBook class
+        AddressBook addressBook = new AddressBook();
         try {
             Scanner myReader = new Scanner(filename);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                System.out.println(data);
+                String [] entry = data.split(",", 8);
+                AddressEntry addressEntry = new AddressEntry(entry[0], entry[1], entry[2], entry[3], entry[4], Integer.parseInt(entry[5]), entry[6], entry[7]);
+                addressBook.add(addressEntry);
+//                System.out.println(addressEntry);
             }
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+        addressBook.list();
     }
 }
