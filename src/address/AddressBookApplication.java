@@ -40,14 +40,6 @@ public class AddressBookApplication {
      * @param addressBook
      */
     public static void initAddressBookExercise(AddressBook addressBook){
-        AddressEntry contactOne = new AddressEntry("Paul", "Henry","1650 Mannie Road",
-                "Oakland", "C.A.", 94565, "510-888-8888", "paul@jvm.com");
-
-        AddressEntry contactTwo = new AddressEntry("Marlene", "Henry","1650 Mannie Road",
-                "Oakland", "C.A.", 94565, "510-999-9999", "marlene@jvm.com");
-
-        addressBook.add(contactOne);
-        addressBook.add(contactTwo);
-        addressBook.list();
+       
     }
 }
