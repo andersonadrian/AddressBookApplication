@@ -7,6 +7,15 @@ package address;
  @version 1.0.1
 
  **/
+
+import address.data.AddressBook;
+import address.data.AddressEntry;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;  // Import the Scanner class
+
 public class Menu {
 
 
@@ -17,14 +26,47 @@ public class Menu {
 
     }
 
+    /**
+     *
+     * List the data from the AddressBook.
+     * */
+    public void listEntries(AddressBook addressBook){
+        addressBook.list();
+    }
+
+    /**
+    * @param filename
+    * loadData loads the Addressbook information from a file
+     * @return String
+    * */
+    public ArrayList loadData(File filename){
+        //create an instance of AddressBook class
+        ArrayList<String> dataStore = new ArrayList<>();
+        try {
+            Scanner myReader = new Scanner(filename);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                dataStore.add(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return dataStore;
+    }
 
     /**
      * prompt_FirstName  generates a standard output prompt for the First Name to be entered
      * @return String
      */
     public String prompt_FirstName() {
+        Scanner firstName = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter first name: ");
 
-       return  "First Name:";
+        String userFirstName = firstName.nextLine();  // Read user input
+
+       return  userFirstName;
 
     }
 
@@ -34,7 +76,12 @@ public class Menu {
      */
     public String prompt_LastName() {
 
-        return "Last Name:";
+        Scanner  lastName = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter last name: ");
+
+        String userLastName = lastName.nextLine();  // Read user input
+
+        return userLastName;
 
     }
 
@@ -44,7 +91,12 @@ public class Menu {
      */
     public String prompt_Street() {
 
-        return "Street:";
+        Scanner street = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter street:");
+
+        String userStreet = street.nextLine();  // Read user input
+
+        return userStreet;
 
     }
 
@@ -54,7 +106,12 @@ public class Menu {
      */
     public String prompt_City() {
 
-        return "City:";
+        Scanner city = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter city: ");
+
+        String userCity = city.nextLine();  // Read user input
+
+        return userCity;
 
     }
 
@@ -63,16 +120,24 @@ public class Menu {
      */
     public String prompt_State() {
 
-        return "State:";
+        Scanner state = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter username");
+
+        String userState = state.nextLine();  // Read user input
+        return userState;
 
     }
 
     /**
      * prompt_Zip  generates a standard output prompt for the Zip to be entered
      */
-    public String prompt_Zip() {
+    public int prompt_Zip() {
 
-        return "Zip:";
+        Scanner zip = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter city: ");
+
+        int userZip = zip.nextInt();  // Read user input
+        return userZip;
 
     }
 
@@ -82,7 +147,11 @@ public class Menu {
      */
     public String prompt_Telephone() {
 
-        return "Telephone:";
+        Scanner telephone = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter telephone: ");
+
+        String userTelephone = telephone.nextLine();  // Read user input
+        return userTelephone;
 
     }
 
@@ -92,7 +161,11 @@ public class Menu {
      */
     public String prompt_Email() {
 
-        return "Email:";
+        Scanner email = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter email: ");
+
+        String userEmail = email.nextLine();  // Read user input
+        return userEmail;
 
     }
 }

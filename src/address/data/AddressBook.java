@@ -40,4 +40,8 @@ public class AddressBook {
            System.out.println(entry);
        }
    }
+
+   public void remove(){
+
+   }
 }
