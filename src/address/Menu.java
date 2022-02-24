@@ -18,12 +18,12 @@ import java.util.Scanner;  // Import the Scanner class
 
 public class Menu {
 
-
+    AddressBook addressBook;
     /**
      * Default constructor
      */
     public Menu(){
-
+        addressBook = new AddressBook();
     }
 
     /**
@@ -34,27 +34,54 @@ public class Menu {
         addressBook.list();
     }
 
-    /**
-    * @param filename
-    * loadData loads the Addressbook information from a file
-     * @return ArrayList</String>
-    * */
-    public ArrayList loadData(File filename){
-        //create an instance of AddressBook class
-        ArrayList<String> dataStore = new ArrayList<>();
-        try {
-            Scanner myReader = new Scanner(filename);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                dataStore.add(data);
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+    public void addressAppMenu() {
+
+        String menu = " \n" +
+                "\n" +
+                "*************************\n" +
+                "Please enter your menu selection\n" +
+                "a) Loading From File\n" +
+                "b) Addition\n" +
+                "c) Removal\n" +
+                "d) Find\n" +
+                "e) Listing\n" +
+                "f) Quit\n" +
+                "*************************";
+        Scanner prompt = new Scanner(System.in);  // Create a Scanner object
+        System.out.println(menu);
+        char promptLetter = prompt.next().charAt(0);  // Read user input
+        System.out.println("You choose : " + promptLetter);  // Output user input
+
+        switch (promptLetter) {
+            case 'a':
+                // code block
+
+                ArrayList<String> addressBookStorage =  addressBook.read("");
+                break;
+            case 'b':
+                // code block
+                break;
+            case 'c':
+                // code block
+                break;
+            case 'd':
+                // code block
+                break;
+            case 'e':
+                // code block
+                break;
+            case 'f':
+                // code block
+                break;
+            default:
+                // code block
+                System.out.println("That letter is not an option");
+
         }
-        return dataStore;
+
+
     }
+
 
     /**
      * prompt_FirstName  generates a standard output prompt for the First Name to be entered

@@ -58,11 +58,13 @@ public class AddressBook {
    }
 
     /**
-     * @param filename
+     * @param filepath
      * read method loads the Addressbook information from a file
      * @return ArrayList</String>
      * */
-    public ArrayList read(File filename){
+    public ArrayList read(String filepath){
+
+        File filename = new File(filepath);
         //create an instance of AddressBook class
         ArrayList<String> dataStore = new ArrayList<>();
         try {
