@@ -37,7 +37,7 @@ public class Menu {
     /**
     * @param filename
     * loadData loads the Addressbook information from a file
-     * @return String
+     * @return ArrayList</String>
     * */
     public ArrayList loadData(File filename){
         //create an instance of AddressBook class
