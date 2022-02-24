@@ -3,6 +3,7 @@ package address.data;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -49,49 +50,83 @@ public class AddressBook {
 
    /**
     * The remove method removes an entry base on the last name given.
-    * @param lastName
+    * @param lastName last name of the AddressEntry Object
     * */
-   public TreeMap<Integer, String> remove(String lastName) {
+   public void remove(String lastName) {
 
-       return find(lastName);
+       TreeMap<Integer, AddressEntry> toBeRemoved =  findEntriesByLastName(lastName);
 
+       for(Map.Entry entry : toBeRemoved.entrySet()){
+           System.out.println(entry.getKey()+" "+entry.getValue());
+       }
+
+       Scanner  scanner = new Scanner(System.in);  // Create a Scanner object
+       System.out.println("Please enter the number of which one you would like to delete");
+       int prompt = scanner.nextInt();  // Read user input
+       addressEntryList.remove(prompt);
+       System.out.println("Entry Deleted!");
    }
 
     /**
-     * @param filepath
+     * @param filepath file path for the file
      * read method loads the Addressbook information from a file
-     * @return ArrayList</String>
      * */
-    public ArrayList read(String filepath){
+    public void read(String filepath){
 
+        int counter = 0;
         File filename = new File(filepath);
         //create an instance of AddressBook class
         ArrayList<String> dataStore = new ArrayList<>();
+        System.out.println("Adding the entries from the file................");
         try {
             Scanner myReader = new Scanner(filename);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 dataStore.add(data);
+                counter += 1;
+                if (counter == 8){
+                    addressEntryList.add(new AddressEntry(dataStore.get(0), dataStore.get(1),dataStore.get(2),dataStore.get(3),dataStore.get(4),Integer.parseInt(dataStore.get(5)),dataStore.get(6),dataStore.get(7)));
+                    dataStore.clear();
+                    counter = 0;
+                }
             }
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        return dataStore;
     }
 
     /**
      * The find method finds an entries base on the last name given.
-     * @param lastName
-     * @return*/
-   public TreeMap<Integer, String> find(String lastName) {
+     * @param lastName last name of the AddressEntry Object
+     *
+     * */
 
-       TreeMap<Integer, String> addressEntryArrayListBaseOnLastNames = new TreeMap<>();
+    public void find(String lastName){
+
+        System.out.println("Here is the list of name: ");
+        TreeMap<Integer, AddressEntry> addressListByLastName =  findEntriesByLastName(lastName);
+
+        for(Map.Entry entry : addressListByLastName.entrySet()){
+            System.out.println(entry.getValue());
+        }
+
+    }
+
+    /**
+     * The find method finds an entries base on the last name given and return a TreeMap of the result.
+     * @param lastName last name of the AddressEntry Object
+     * @return TreeMap
+     *
+     * */
+   private TreeMap<Integer, AddressEntry> findEntriesByLastName(String lastName) {
+
+       TreeMap<Integer, AddressEntry> addressEntryArrayListBaseOnLastNames = new TreeMap<>();
        for (int counter = 0; counter < addressEntryList.size(); counter++){
 
            if (lastName.equals(addressEntryList.get(counter).getLastName())){
-               addressEntryArrayListBaseOnLastNames.put(counter, addressEntryList.get(counter).getLastName());
+               addressEntryArrayListBaseOnLastNames.put(counter, addressEntryList.get(counter));
            }
 
        }

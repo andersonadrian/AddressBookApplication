@@ -48,37 +48,68 @@ public class Menu {
                 "f) Quit\n" +
                 "*************************";
         Scanner prompt = new Scanner(System.in);  // Create a Scanner object
-        System.out.println(menu);
-        char promptLetter = prompt.next().charAt(0);  // Read user input
-        System.out.println("You choose : " + promptLetter);  // Output user input
+        boolean shouldQuit = true;
+        while(shouldQuit) {
+            System.out.println(menu);
+            char promptLetter = prompt.next().charAt(0);  // Read user input
+            shouldQuit = promptLetter != 'f';
+            System.out.println("You choose : " + promptLetter);  // Output user input
 
-        switch (promptLetter) {
-            case 'a':
-                // code block
+            switch (promptLetter) {
+                case 'a':
+                    // code block
+                    Scanner  filePath = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("Please enter the file name ex. addressBookList.txt");
+                    System.out.println("Enter here : ");
 
-                ArrayList<String> addressBookStorage =  addressBook.read("");
-                break;
-            case 'b':
-                // code block
-                break;
-            case 'c':
-                // code block
-                break;
-            case 'd':
-                // code block
-                break;
-            case 'e':
-                // code block
-                break;
-            case 'f':
-                // code block
-                break;
-            default:
-                // code block
-                System.out.println("That letter is not an option");
+                    String fileName = filePath.nextLine();  // Read user input
+                     addressBook.read(fileName);
 
+                    break;
+                case 'b':
+                    AddressEntry addressEntry = new AddressEntry();
+                    System.out.println("Please enter each item separately first-name last-name street city state zip phone number and email address: ");
+                    addressEntry.setFirstName(prompt_FirstName());
+                    addressEntry.setLastName(prompt_FirstName());
+                    addressEntry.setStreet(prompt_FirstName());
+                    addressEntry.setCity(prompt_FirstName());
+                    addressEntry.setState(prompt_FirstName());
+                    addressEntry.setZip(prompt_Zip());
+                    addressEntry.setTelephone(prompt_Telephone());
+                    addressEntry.setEmail(prompt_Email());
+                    addressBook.add(addressEntry);
+                    System.out.println("Contact Added!");
+                    // code block
+                    break;
+                case 'c':
+                    Scanner  scannerForRemoval = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("Enter the last name of the entry you would like to delete: ");
+                    String userLastNameToBeRemoved = scannerForRemoval.nextLine();  // Read user input
+                    addressBook.remove(userLastNameToBeRemoved);
+
+                    // code block
+                    break;
+                case 'd':
+                    Scanner  scannerForRetrieval = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("Enter the last name of the entry you would like to delete: ");
+                    String userLastNameForRetrieval = scannerForRetrieval.nextLine();  // Read user input
+                    addressBook.find(userLastNameForRetrieval);
+                    // code block
+                    break;
+                case 'e':
+                    addressBook.list();
+                    // code block
+                    break;
+                case 'f':
+                    System.out.println("Quiting........");
+                    // code block
+                    break;
+                default:
+                    // code block
+                    System.out.println("That letter is not an option");
+
+            }
         }
-
 
     }
 
