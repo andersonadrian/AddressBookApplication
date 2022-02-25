@@ -167,6 +167,7 @@ public class Menu {
 
     /**
      * prompt_State  generates a standard output prompt for the State to be entered
+     * @return String
      */
     public String prompt_State() {
 
@@ -180,6 +181,7 @@ public class Menu {
 
     /**
      * prompt_Zip  generates a standard output prompt for the Zip to be entered
+     * @return Integer
      */
     public int prompt_Zip() {
 
