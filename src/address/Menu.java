@@ -26,14 +26,6 @@ public class Menu {
         addressBook = new AddressBook();
     }
 
-    /**
-     *
-     * List the data from the AddressBook.
-     * */
-    public void listEntries(AddressBook addressBook){
-        addressBook.list();
-    }
-
     public void addressAppMenu() {
 
         String menu = " \n" +

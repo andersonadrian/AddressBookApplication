@@ -20,7 +20,7 @@ public class AddressBook {
      * The addressEntryList is the Array List that stores the entries of the Address Book.
      */
 
-    ArrayList<AddressEntry> addressEntryList;
+    private final ArrayList<AddressEntry> addressEntryList;
 
     /**
      * Default constructor
