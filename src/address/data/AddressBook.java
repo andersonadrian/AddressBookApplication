@@ -57,11 +57,11 @@ public class AddressBook {
     * @param lastName last name of the AddressEntry Object
     * */
    public void remove(String lastName) {
-       boolean isPresent = true;
+       boolean isNotPresent = true;
        TreeMap<Integer, AddressEntry> toBeRemoved = findEntriesByLastName(lastName);
        for (AddressEntry entry : addressEntryList) {
-           if (lastName.equals(entry.getLastName())){
-               isPresent = false;
+           if (entry.getLastName().equals(lastName)){
+               isNotPresent = false;
                for (Map.Entry entryToBeRemoved : toBeRemoved.entrySet()) {
                    System.out.println(entryToBeRemoved.getKey() + " " + entryToBeRemoved.getValue());
                }
@@ -74,7 +74,7 @@ public class AddressBook {
            }
            break;
        }
-       if (isPresent) System.out.println("That Last name isn't in the database");
+       if (isNotPresent) System.out.println("That Last name isn't in the database");
    }
 
     /**
@@ -114,13 +114,19 @@ public class AddressBook {
      * */
 
     public void find(String lastName){
-
-        System.out.println("Here is the list of name: ");
-        TreeMap<Integer, AddressEntry> addressListByLastName =  findEntriesByLastName(lastName);
-
-        for(Map.Entry entry : addressListByLastName.entrySet()){
-            System.out.println(entry.getValue());
+        boolean isNotPresent = true;
+        TreeMap<Integer, AddressEntry> entriestoBeViewed = findEntriesByLastName(lastName);
+        for (AddressEntry entry : addressEntryList) {
+            if (lastName.equals(entry.getLastName())){
+                isNotPresent = false;
+                for (Map.Entry entryToBeViewed : entriestoBeViewed.entrySet()) {
+                    System.out.println(entryToBeViewed.getValue());
+                }
+                break;
+            }
+            break;
         }
+        if (isNotPresent) System.out.println("That Last name isn't in the database");
 
     }
 
