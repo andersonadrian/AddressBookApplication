@@ -14,6 +14,10 @@ import java.util.TreeMap;
  @version 1.0.1
  **/
 
+/**
+ * The AddressBook class is the component used to add the information to the
+ *  Address Book application about the of a person.
+ */
 public class AddressBook {
 
     /**
@@ -53,18 +57,24 @@ public class AddressBook {
     * @param lastName last name of the AddressEntry Object
     * */
    public void remove(String lastName) {
-
-       TreeMap<Integer, AddressEntry> toBeRemoved =  findEntriesByLastName(lastName);
-
-       for(Map.Entry entry : toBeRemoved.entrySet()){
-           System.out.println(entry.getKey()+" "+entry.getValue());
+       boolean isPresent = true;
+       TreeMap<Integer, AddressEntry> toBeRemoved = findEntriesByLastName(lastName);
+       for (AddressEntry entry : addressEntryList) {
+           if (lastName.equals(entry.getLastName())){
+               isPresent = false;
+               for (Map.Entry entryToBeRemoved : toBeRemoved.entrySet()) {
+                   System.out.println(entryToBeRemoved.getKey() + " " + entryToBeRemoved.getValue());
+               }
+               Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+               System.out.println("Please enter the number of which one you would like to delete");
+               int prompt = scanner.nextInt();  // Read user input
+               addressEntryList.remove(prompt);
+               System.out.println("Entry Deleted!");
+               break;
+           }
+           break;
        }
-
-       Scanner  scanner = new Scanner(System.in);  // Create a Scanner object
-       System.out.println("Please enter the number of which one you would like to delete");
-       int prompt = scanner.nextInt();  // Read user input
-       addressEntryList.remove(prompt);
-       System.out.println("Entry Deleted!");
+       if (isPresent) System.out.println("That Last name isn't in the database");
    }
 
     /**

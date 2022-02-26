@@ -5,7 +5,6 @@ package address;
  @author Adrian Anderson
  @since Jan. 29, 2022
  @version 1.0.1
-
  **/
 
 import address.data.AddressBook;
@@ -16,6 +15,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;  // Import the Scanner class
 
+/**
+ * The Menu class represents the menu of the
+ *  AddressBook application.
+ */
 public class Menu {
 
     AddressBook addressBook;
@@ -56,16 +59,17 @@ public class Menu {
 
                     String fileName = filePath.nextLine();  // Read user input
                      addressBook.read(fileName);
+                    System.out.println("Completed! Addresses Added");
 
                     break;
                 case 'b':
                     AddressEntry addressEntry = new AddressEntry();
                     System.out.println("Please enter each item separately first-name last-name street city state zip phone number and email address: ");
                     addressEntry.setFirstName(prompt_FirstName());
-                    addressEntry.setLastName(prompt_FirstName());
-                    addressEntry.setStreet(prompt_FirstName());
-                    addressEntry.setCity(prompt_FirstName());
-                    addressEntry.setState(prompt_FirstName());
+                    addressEntry.setLastName(prompt_LastName());
+                    addressEntry.setStreet(prompt_Street());
+                    addressEntry.setCity(prompt_City());
+                    addressEntry.setState(prompt_State());
                     addressEntry.setZip(prompt_Zip());
                     addressEntry.setTelephone(prompt_Telephone());
                     addressEntry.setEmail(prompt_Email());
@@ -112,7 +116,7 @@ public class Menu {
      */
     public String prompt_FirstName() {
         Scanner firstName = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter first name: ");
+        System.out.println("Enter First name: ");
 
         String userFirstName = firstName.nextLine();  // Read user input
 
@@ -127,7 +131,7 @@ public class Menu {
     public String prompt_LastName() {
 
         Scanner  lastName = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter last name: ");
+        System.out.println("Enter Last name: ");
 
         String userLastName = lastName.nextLine();  // Read user input
 
@@ -142,7 +146,7 @@ public class Menu {
     public String prompt_Street() {
 
         Scanner street = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter street:");
+        System.out.println("Enter Street:");
 
         String userStreet = street.nextLine();  // Read user input
 
@@ -157,7 +161,7 @@ public class Menu {
     public String prompt_City() {
 
         Scanner city = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter city: ");
+        System.out.println("Enter City: ");
 
         String userCity = city.nextLine();  // Read user input
 
@@ -172,7 +176,7 @@ public class Menu {
     public String prompt_State() {
 
         Scanner state = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter username");
+        System.out.println("Enter State: ");
 
         String userState = state.nextLine();  // Read user input
         return userState;
@@ -186,7 +190,7 @@ public class Menu {
     public int prompt_Zip() {
 
         Scanner zip = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter city: ");
+        System.out.println("Enter Zip: ");
 
         int userZip = zip.nextInt();  // Read user input
         return userZip;
@@ -200,7 +204,7 @@ public class Menu {
     public String prompt_Telephone() {
 
         Scanner telephone = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter telephone: ");
+        System.out.println("Enter Telephone: ");
 
         String userTelephone = telephone.nextLine();  // Read user input
         return userTelephone;
@@ -214,7 +218,7 @@ public class Menu {
     public String prompt_Email() {
 
         Scanner email = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter email: ");
+        System.out.println("Enter Email: ");
 
         String userEmail = email.nextLine();  // Read user input
         return userEmail;

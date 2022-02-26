@@ -7,6 +7,10 @@ package address.data;
  @version 1.0.1
  **/
 
+/**
+ * The AddressEntry class represents the information of the
+ *  entry object in address book and about information of a person.
+ */
 public class AddressEntry {
 
     /** firstName represents the string of that is the first name of
